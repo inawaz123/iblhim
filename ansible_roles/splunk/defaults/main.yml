@@ -1,0 +1,14 @@
+---
+
+ansible_user: ec2-user
+ansible_become: true
+ansible_ssh_private_key_file: "mydefault_ssh_key_location"
+username: "====="
+password: "====="
+
+
+mysplunk:
+  image: myrepo/testrepo
+  tag: ansible_2020-03-03-1583214482
+  password: mypaaaaassss
+replica: 1

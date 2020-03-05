@@ -1,0 +1,38 @@
+---
+
+- name: install required docker api
+  pip:
+    name: ['docker']
+
+- name: create working folder
+  file:
+    path: tmp/etc/splunk_builder
+    state: directory
+    mode: 0755
+- name: generate default conf for splunk
+  template: src="{{item}}.j2" dest="tmp/{{item}}" mode=0755
+  with_items:
+  - "etc/splunk_builder/default.yml"
+    
+- name: generate dockerfile for splunk
+  template: src="{{item}}.j2" dest="tmp/{{item}}" mode=0755
+  with_items:
+  - "etc/splunk_builder/Dockerfile"
+
+- name: Remove image
+  docker_image:
+    state: absent
+    name: mysplunk
+    tag: localbuild
+
+- name: Build image and with build args
+  docker_image:
+    name: mysplunk
+    tag: localbuild
+    build:
+      path: tmp/etc/splunk_builder
+    nocache: true
+    #   args:
+    #     log_volume: /var/log/myapp
+    #     listen_port: 8080
+    source: build

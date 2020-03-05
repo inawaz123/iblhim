@@ -1,0 +1,25 @@
+---
+
+# - name: splunk init service file
+#   template: src="{{item}}.j2" dest="/{{item}}" mode=0755
+#   with_items:
+#   - "etc/init.d/mysplunk"
+#   notify:
+#   - restart systemd
+
+
+- name: splunk systemd service file
+  template: src="{{item}}.j2" dest="/{{item}}" mode=0755
+  with_items:
+  - "etc/systemd/system/mysplunk.service"
+  notify:
+  - restart systemd
+
+
+- name: build docker-compose file
+  template: src="{{item}}.j2" dest="/{{item}}" mode=0644
+  with_items:
+  - "etc/mysplunk/docker-compose.yml"
+  notify:
+  - restart mysplunk
+

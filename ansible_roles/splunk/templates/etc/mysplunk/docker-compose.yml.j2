@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  mysplunk:
+    image: {{mysplunk.image}}:{{mysplunk.tag}}
+    hostname: {{ansible_fqdn}}
+    ports:
+      - "8000-8100:8000"
+    environment:
+      SPLUNK_START_ARGS: "--accept-license"
+      SPLUNK_PASSWORD: "{{mysplunk.password}}"
+
+#    volumes:
+
+    restart: always

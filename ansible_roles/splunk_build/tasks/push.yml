@@ -1,0 +1,13 @@
+---
+- name: ensure docker login
+  docker_login:
+    # registry: "{{yourprivatereg}}"
+    username: "{{username}}"
+    password: "{{password}}"
+
+- name: Push to hub
+  docker_image:
+    name: mysplunk:localbuild
+    repository: "{{repo}}:{{tag}}_{{ansible_date_time.date}}-{{ansible_date_time.epoch}}"
+    push: true
+    source: local

@@ -1,0 +1,15 @@
+- include: install.yml
+  tags: ['mysplunk', 'mysplunk:install']
+
+- include: configure.yml
+  tags: ['mysplunk', 'mysplunk:configure']
+
+- import_tasks: pull.yml
+  tags: ['mysplunk', 'mysplunk:pull']
+
+- include: service.yml
+  tags: ['mysplunk', 'mysplunk:service']
+
+- name: register role
+  ini_file: dest=/etc/ansible/facts.d/roles.fact section={{role_name}} option=dummy value=dummy mode=0644
+  tags: ['mysplunk', 'register']

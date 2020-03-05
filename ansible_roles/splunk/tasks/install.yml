@@ -1,0 +1,16 @@
+---
+- name: install required docker api
+  pip:
+    name: ['docker']
+- name: ensure docker login
+  docker_login:
+    # registry: "{{yourprivatereg}}"
+    username: "{{username}}"
+    password: "{{password}}"
+
+- name: create splunk folder
+  file:
+    path: /etc/mysplunk
+    state: directory
+    mode: 0755
+

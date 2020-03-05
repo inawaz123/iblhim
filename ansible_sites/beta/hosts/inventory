@@ -1,0 +1,8 @@
+[splunk_builder]
+eric ansible_connection=local ansible_python_interpreter=/usr/local/Cellar/python/3.7.6_1/bin/python3
+
+[docker]
+redhat ansible_host=10.106.38.242
+
+[splunk]
+redhat ansible_host=10.106.38.242

@@ -1,0 +1,16 @@
+---
+- hosts: docker
+  roles:
+    - role: repo-epel
+    
+- hosts: docker
+  roles:
+    - role: pip
+
+- hosts: docker
+  roles:
+    - role: docker_rehl_ce
+    
+- hosts: splunk
+  roles:
+    - role: splunk

@@ -1,0 +1,7 @@
+---
+
+- name: ensure latest image
+  docker_image:
+    name: "{{mysplunk.image}}"
+    tag: "{{mysplunk.tag}}"
+    force: yes

@@ -1,0 +1,7 @@
+
+- include: build.yml
+  tags: ['splunk-build', 'splunk-build:build']
+  
+- include: push.yml
+  tags: ['splunk-build', 'splunk-build:push']
+

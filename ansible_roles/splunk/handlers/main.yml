@@ -1,0 +1,12 @@
+---
+- name: restart systemd
+  command: systemctl daemon-reload
+
+- name: restart mysplunk
+  service: name=mysplunk state=restarted
+
+
+- name: systemd reload
+  systemd:
+    daemon_reload: yes
+

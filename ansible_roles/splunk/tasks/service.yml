@@ -1,0 +1,6 @@
+---
+- name: Start mysplunk service
+  service:
+    name: mysplunk
+    state: started
+

@@ -1,0 +1,22 @@
+[Unit]
+Description=mysplunk
+StartLimitIntervalSec=30
+StartLimitBurst=3
+
+[Service]
+Type=simple
+User=root
+Group=root
+# Load env vars from /etc/default/ and /etc/sysconfig/ if they exist.
+# Prefixing the path with '-' makes it try to load, but if the file doesn't
+# exist, it continues onward.
+#EnvironmentFile=-/etc/default/
+
+ExecStart=/bin/docker-compose -f /etc/mysplunk/docker-compose.yml up --scale mysplunk={{replica}}
+ExecReload=/bin/docker-compose -f --force-recreate /etc/mysplunk/docker-compose.yml up --scale mysplunk={{replica}}
+ExecStop=/bin/docker-compose -f /etc/mysplunk/docker-compose.yml down
+Restart=always
+WorkingDirectory=/etc/mysplunk
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,4 @@
+#!/usr/bin/env ansible-playbook
+# splunk
+- include: ../../ansible_playbooks/splunk.yml
+

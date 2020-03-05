@@ -1,0 +1,12 @@
+---
+# - hosts: all
+#   roles:
+#   - role: docker-ce
+# - hosts: docker
+#   roles:
+#     - role: docker-ce
+    
+- hosts: splunk_builder
+  serial: 1
+  roles:
+  - role: splunk_build
