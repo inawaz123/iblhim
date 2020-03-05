@@ -1,5 +1,5 @@
 ---
 mysplunk:
-  image: baby3873575/testrepo
+  image: myrepo/testrepo
   tag: ansible
   password: mypaaaaassss
